@@ -1,0 +1,323 @@
+
+## Error pages redirect
+## ==================================================================================================================
+
+ErrorDocument 400 /error/401.html
+ErrorDocument 401 /error/401.html
+ErrorDocument 403 /error/403.html
+ErrorDocument 404 /error/404.html
+ErrorDocument 500 /error/500.html
+
+
+
+## Sitemap
+## ==================================================================================================================
+
+# Bulletproof sitemap redirects
+<IfModule mod_alias.c>
+	RedirectMatch 301 (?i)(?<!^)/(.*)?sitemap(.*)?\.(htm|html|xml)(\.gz)? /sitemap.xml$4
+</IfModule>
+
+
+
+## stop the hot linking of js and css files
+## ==================================================================================================================
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?yourwebsite.com/.*$ [NC]
+RewriteRule \.(js|css)$ - [F]
+
+
+
+## Stop the hot linking of images and redirecting visitor to angryman gif
+## ==================================================================================================================
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?yourwebsite.com/.*$ [NC]
+RewriteRule \.(gif|jpg)$ http://www.yourwebsite/angryman.gif [R,L]
+
+
+
+## Blocking offline browsers and bad bots
+## ==================================================================================================================
+
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Custo [OR]
+RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR]
+RewriteCond %{HTTP_USER_AGENT} ^HMView [OR]
+RewriteCond %{HTTP_USER_AGENT} HTTrack [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR]
+RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR]
+RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR]
+RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^larbin [OR]
+RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR]
+RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR]
+RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR]
+RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR]
+RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR]
+RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR]
+RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR]
+RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebWhacker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Wget [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Widow [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Zeus
+RewriteRule ^.* - [F,L]
+
+
+
+#Adding MIME Types
+## ==================================================================================================================
+
+AddType text/html .html .htm
+AddType text/plain .txt
+AddType text/richtext .rtx
+AddType text/tab-separated-values .tsv
+AddType text/x-setext .etx
+AddType text/x-server-parsed-html .html .sht
+AddType application/macbinhex-40 .hqx
+AddType application/netalivelink .nel
+AddType application/netalive .net
+AddType application/news-message-id
+AddType application/news-transmission
+AddType application/octet-stream .bin .exe
+AddType application/oda .oda
+AddType application/pdf .pdf
+AddType application/postscript .ai .eps .ps
+AddType application/remote-printing
+AddType application/rtf .rtf
+AddType application/slate
+AddType application/zip .zip
+AddType application/x-mif .mif
+AddType application/wita
+AddType application/wordperfect5.1
+AddType application/x-csh .csh
+AddType application/x-dvi .dvi
+AddType application/x-hdf .hdf
+AddType application/x-latex .latex
+AddType application/x-netcdf .nc .cdf
+AddType application/x-sh .sh
+AddType application/x-tcl .tcl
+AddType application/x-tex .tex
+AddType application/x-texinfo .texinfo .texi
+AddType application/x-troff .t .tr .roff
+AddType application/x-troff-man .man
+AddType application/x-troff-me .me
+AddType application/x-troff-ms .ms
+AddType application/x-wais-source .src
+AddType application/x-bcpio .bcpio
+AddType application/x-cpio .cpio
+AddType application/x-gtar .gtar
+AddType application/x-shar .shar
+AddType application/x-sv4cpio .sv4cpio
+AddType application/x-sv4crc .sv4crc
+AddType application/x-tar .tar
+AddType application/x-ustar .ustar
+AddType application/x-director .dcr
+AddType application/x-director .dir
+AddType application/x-director .dxr
+AddType application/x-onlive .sds
+AddType application/x-httpd-cgi .cgi
+AddType image/gif .gif .GIF
+AddType image/ief .ief
+AddType image/jpeg .jpeg .jpg .jpe .JPG
+AddType image/tiff .tiff .tif
+AddType image/x-cmu-raster .ras
+AddType image/x-portable-anymap .pnm
+AddType image/x-portable-bitmap .pbm
+AddType image/x-portable-graymap .pgm
+AddType image/x-portable-pixmap .ppm
+AddType image/x-rgb .rgb
+AddType image/x-xbitmap .xbm
+AddType image/x-xpixmap .xpm
+AddType image/x-xwindowdump .xwd
+AddType audio/basic .au .snd
+AddType audio/x-aiff .aif .aiff .aifc
+AddType audio/x-wav .wav
+AddType audio/x-pn-realaudio .ram
+AddType audio/x-midi .mid
+AddType video/mpeg .mpeg .mpg .mpe
+AddType video/quicktime .qt .mov
+AddType video/x-msvideo .avi
+AddType video/x-sgi-movie .movie
+AddType message/external-body
+AddType message/news
+AddType message/partial
+AddType message/rfc822
+AddType multipart/alternative
+AddType multipart/appledouble
+AddType multipart/digest
+AddType multipart/mixed
+AddType multipart/parallel
+AddType x-world/x-vrml .wrl
+
+
+
+## Adding SSI - Server Side Includes
+## ==================================================================================================================
+
+AddHandler server-parsed .html
+AddHandler server-parsed .html
+AddHandler server-parsed .htm
+
+
+
+## Enable CGI outside of the cgi-bin
+## ==================================================================================================================
+
+AddHandler cgi-script .cgi
+Options +ExecCGI
+
+#The above lines tell the Apache Web Server to allow firstly, process '.cgi' files as CGI scripts, and secondly to enable CGI within the directory.
+
+
+
+## Disable directory listings
+## ==================================================================================================================
+
+IndexIgnore *
+
+## The above lines tell the Apache Web Server to prevent directory listings of directories and files within the directory containing 
+## the .htaccess file. The '*' represents a wildcard, this means it will not display any files.
+
+
+
+## Setting server timezone - Central Time
+## ==================================================================================================================
+
+SetEnv TZ America/Chicago
+
+
+
+## Changing server signature
+## ==================================================================================================================
+
+ServerSignature EMail
+SetEnv SERVER_ADMIN servererror@yourwebsite.com
+
+## To remove the server signature completely, use the following code:
+## ServerSignature Off
+
+
+
+## Preventing access to your PHP includes files
+## =================================================================================================================
+
+## Enable Mod Rewrite, this is only required once in each .htaccess file
+RewriteEngine On
+RewriteBase /
+## Test for access to includes directory
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /includes/ .*$ [NC]
+## Test that file requested has php extension
+RewriteCond %{REQUEST_FILENAME} ^.+\.php$
+## Forbid Access
+RewriteRule .* - [F,NS,L]
+
+## Where /includes/ is your includes directory.
+## Put this in folder where PHP include files are located
+
+
+
+## Prevent access to php.ini
+## =================================================================================================================
+
+<FilesMatch "^php5?\.(ini|cgi)$">
+Order Deny,Allow
+Deny from All
+Allow from env=REDIRECT_STATUS
+</FilesMatch>
+
+
+
+## Forcing scripts to display as source code
+## =================================================================================================================
+
+## RemoveHandler cgi-script .pl .cgi .php .py
+## AddType text/plain .pl .cgi .php .py
+
+## If you need to display scripts as source code, instead of executing, for example to allow review, this can be achieved with the Remove Handler function
+
+## ===== Not Enabled / Commented Out =====
+
+
+
+## Ensuring media files are downloaded instead of played
+## =================================================================================================================
+
+AddType application/octet-stream .zip
+
+## .zip .mp3 .mp4
+
+## It is possible to ensure that any media files are treated as a download, rather than to be played by the browser.
+
+## This tells the Apache Web Server to treat .zip, .mp3, and .mp4 files as downloadable, and should be used instead of 
+## specifiying them as audio/video/zip files in your MIME types section.
+
+
+
+## Setting up Associations for Encoded Files
+## =================================================================================================================
+
+AddEncoding x-gzip .gz .tgz
+AddEncoding x-compress .Z
+
+## Some browsers are capable of uncompressing encoded information as they receive it.
+## This tells the Apache Web Server to treat .gz and .tgz files as encoded by x-gzip, and .Z files as encoded by x-compress.

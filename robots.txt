@@ -1,0 +1,21 @@
+Sitemap: https://www.yourwebsite.com/sitemap.xml
+Sitemap: https://www.yourwebsite.com/sitemap.txt
+Sitemap: https://www.yourwebsite.com/sitemap.html
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: msnbot
+Disallow: /
+
+User-agent: *
+Disallow: /tmp/
+Disallow: /logs # for directories and files called logs
+
+## To block access to all subdirectories that begin with “private”:
+User-agent: *
+Disallow: /private*/
+
+## to block access to all URLs that include a question mark (?)
+User-agent: *
+Disallow: /*?*
